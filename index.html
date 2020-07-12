@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Time||Background Color||Form Validation</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 16px;
+            font-family: sans-serif;
+            padding: 40px;
+        }
+
+        h1 {
+            margin: 0 auto 40px auto;
+            padding-top: 90px;
+            padding-bottom: 90px;
+            background-color: #f4f4f4;
+            text-align: center;
+            text-transform: uppercase;
+            border: 2px solid #c4c4c4;
+            box-shadow: 0 10px 20px  rgba(0, 0, 0, 0.4)
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto 40px auto;
+        }
+
+        .time {
+            padding: 20px 30px 20px 30px;
+        }
+
+        .select {
+            padding: 20px;
+        }
+
+
+       h3 {
+           margin-bottom: 20px;
+       }
+
+       .form {
+         text-align: center;
+       }
+
+       .form, input {
+           margin-bottom: 10px;
+           padding: 5px 10px;
+       }
+
+       #heading2 {
+           text-align: center;
+       }
+
+
+
+
+    </style>
+
+</head>
+<body id="body">
+    <h1 id="heading">my first javascript implementation!</h1>
+    <div class="container">
+        <button class="time"  onmouseout="clearDate()" onclick="showDate()">click to check time</button>
+
+        <form class="select" name="formBgColor">
+            <label for="select">background-color:</label>
+            <select name="select" id="select" onchange="color(this)"> 
+                <option value="blue">blue</option>
+                <option value="green">green</option>
+                <option value="orangered">orangered</option>
+                <option value="grey">grey</option>
+                <option value="violet">violet</option>
+                <option value="white" onclick="headingBlack()">white</option>
+            </select>
+
+        </form>
+      
+        <form action="data.php" method="POST" name="formName" class="form" onsubmit="return validateForm()">
+            <h3>please enter your details below if you love this page ,thank you.</h3>
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName"><br>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="last name" name="lastName" required><br>
+            
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+    <h2 id="heading2"></h2>
+    
+    <script>
+       function showDate(){
+            var heading2 = document.getElementById('heading2');
+            heading2.innerHTML = Date();
+       }
+
+       function clearDate(){
+        var heading2 = document.getElementById('heading2');
+            heading2.innerHTML = "";
+       }
+
+       function color(x){
+            var body = document.getElementById('body');
+            body.style.backgroundColor = x.value;
+            var heading1 = document.getElementById('heading1');
+            heading.style.color = x.value;
+
+            /*if (x.value == x.white){
+                heading1.style.color = x.blue;
+            }*/
+        }
+
+        function validateForm(){
+            var firstName = document.forms.formName.firstName.value;
+
+            if (firstName == null || firstName == ""){
+                alert('first name is required');
+                return false;
+            }
+
+            if (firstName.length < 3){
+                alert('first name must be at least three(3) characters');
+                return false;
+            }
+          
+        }
+
+    </script>
+
+</body>
+</html>
